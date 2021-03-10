@@ -1,5 +1,22 @@
 ## Temporary setup notes ##
 
+Requirements:
+
+-OWASP Zap
+-Python/pip (If using 3+, change 'raw_input' in 3_attack.py to 'input')
+-Node
+
+You will need to set the below environment variables (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!)
+
+`ZAP_PORT=8080`
+
+`ZAP_PATH="<path_to_zap.sh>"`
+
+`ZAP_URL="http://localhost"`
+
+`ZAP_API_KEY="<your zap api key>"`
+
+
 To mark each script as executable:
 
 `chmod +x run.py`
@@ -28,6 +45,7 @@ This will launch juice shop, ZAP in Daemon mode and after a short setup period w
 5. Run `npm start`
 6. Browse to <http://localhost:3000>
 
+## FOR REFERENCE ONLY ##
 ### Docker Container
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/bkimminich/juice-shop.svg)](https://hub.docker.com/r/bkimminich/juice-shop)
