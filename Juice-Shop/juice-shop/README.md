@@ -3,7 +3,9 @@
 Requirements:
 
 -OWASP Zap
+
 -Python/pip (If using 3+, change 'raw_input' in 3_attack.py to 'input')
+
 -Node
 
 You will need to set the below environment variables (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!)
