@@ -1,14 +1,20 @@
 ## Temporary setup notes ##
 
 To mark each script as executable:
-chmod +x run.py
-chmod +x 1_juiceshop.py
-chmod +x 2_zap.py
-chmod +x 3_attack.py
 
-once all are executable, launch master script via: ./run.py
+`chmod +x run.py`
 
-This will launch juice shop, zap in daemon mode and after a short setup period will run a basic spider + scan, then save the results to html.
+`chmod +x 1_juiceshop.py`
+
+`chmod +x 2_zap.py`
+
+`chmod +x 3_attack.py`
+
+Once all are executable, launch master script via: 
+
+`./run.py`
+
+This will launch juice shop, ZAP in Daemon mode and after a short setup period will run a basic spider + scan, then save the results to an html file.
 
 *NOTE:* There are file paths specified in the scripts that will need to be altered to reflect your own file path/s - these are denoted anywhere starting os.chdir(....) - So you'll need to determine where "zap.sh" is located on your machine and replace the locations with that, as well as setting where you want the report to be saved to.
 
@@ -17,12 +23,8 @@ This will launch juice shop, zap in daemon mode and after a short setup period w
 ![GitHub repo size](https://img.shields.io/github/repo-size/bkimminich/juice-shop.svg)
 
 1. Install [node.js](#nodejs-version-compatibility)
-2. Run `git clone https://github.com/bkimminich/juice-shop.git` (or
-   clone [your own fork](https://github.com/bkimminich/juice-shop/fork)
-   of the repository)
 3. Go into the cloned folder with `cd juice-shop`
-4. Run `npm install` (only has to be done before first start or when you
-   change the source code)
+4. Run `npm install` (only has to be done before first start or when you change the source code)
 5. Run `npm start`
 6. Browse to <http://localhost:3000>
 
