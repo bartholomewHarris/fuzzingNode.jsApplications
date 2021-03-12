@@ -7,7 +7,7 @@ import os
 os.system("gnome-terminal -- python 1_juiceshop.py")
 
 #wait for juiceshop to startup
-time.sleep(10)
+time.sleep(12)
 
 #launch htcap attack
 os.system("gnome-terminal -- python 2_htcap.py")

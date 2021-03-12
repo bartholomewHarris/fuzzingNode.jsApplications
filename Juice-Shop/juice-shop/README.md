@@ -2,13 +2,11 @@
 
 Requirements:
 
--OWASP Zap
-
--Python/pip (If using 3+, change 'raw_input' in 3_attack.py to 'input')
+-Python/pip
 
 -Node
 
-You will need to set the below environment variables (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!)
+You may need to set the below environment variables for ZAP before running (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!). Since moving to a local version of zap I have not checked to see if this still needs to be done, so if you get errors when running zap do this bit.
 
 `ZAP_PORT=8080`
 
@@ -18,48 +16,19 @@ You will need to set the below environment variables (location will depend on sy
 
 `ZAP_API_KEY="<your zap api key>"`
 
+More info on api key here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
+
+For each fuzzer/application combination there is specific folder with a run.py script to launch all setup/fuzzing/reporting for that specific combination. These are all found in the "run_scripts" folder.
 
 To mark each script as executable:
 
-`chmod +x run.py`
-
-`chmod +x 1_juiceshop.py`
-
-`chmod +x 2_zap.py`
-
-`chmod +x 3_attack.py`
+`chmod +x "script_name.py"`
 
 Once all are executable, launch master script via: 
 
 `./run.py`
 
-This will launch juice shop, ZAP in Daemon mode and after a short setup period will run a basic spider + scan, then save the results to an html file.
+This will launch that specific fuzzer against that specifc application.
 
-*NOTE:* There are file paths specified in the scripts that will need to be altered to reflect your own file path/s - these are denoted anywhere starting os.chdir(....) - So you'll need to determine where "zap.sh" is located on your machine and replace the locations with that, as well as setting where you want the report to be saved to.
-
-### From Sources
-
-![GitHub repo size](https://img.shields.io/github/repo-size/bkimminich/juice-shop.svg)
-
-1. Install [node.js](#nodejs-version-compatibility)
-3. Go into the cloned folder with `cd juice-shop`
-4. Run `npm install` (only has to be done before first start or when you change the source code)
-5. Run `npm start`
-6. Browse to <http://localhost:3000>
-
-## FOR REFERENCE ONLY ##
-### Docker Container
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/bkimminich/juice-shop.svg)](https://hub.docker.com/r/bkimminich/juice-shop)
-![Docker Stars](https://img.shields.io/docker/stars/bkimminich/juice-shop.svg)
-[![](https://images.microbadger.com/badges/image/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop
-"Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop
-"Get your own version badge on microbadger.com")
-
-1. Install [Docker](https://www.docker.com)
-2. Run `docker pull bkimminich/juice-shop`
-3. Run `docker run --rm -p 3000:3000 bkimminich/juice-shop`
-4. Browse to <http://localhost:3000> (on macOS and Windows browse to
-   <http://192.168.99.100:3000> if you are using docker-machine instead
+In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions all file directory commands are called using `os.chdir(...file_path...)`
 

@@ -10,7 +10,7 @@ os.system("gnome-terminal -- python 1_juiceshop.py")
 os.system("gnome-terminal -- python 2_zap.py")
 
 #wait for the above to boot
-time.sleep(12)
+time.sleep(20)
 
 #launch attack script
 os.system("gnome-terminal -- python 3_attack.py")
