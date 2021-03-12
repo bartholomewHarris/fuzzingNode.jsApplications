@@ -13,7 +13,7 @@
 
 -Node
 
-*Setup:*
+### *Setup:*
 
 You may need to set the below environment variables for ZAP before running (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!). Since moving to a local version of zap I have not checked to see if this still needs to be done, so if you get errors when running zap do this bit.
 
@@ -29,7 +29,7 @@ To find your api key: Open ZAP -> Tools -> Options -> API
 
 More info on api keys here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
 
-*Fuzzing:*
+### *Fuzzing:*
 
 For each fuzzer/application combination there is a specific folder with a master "run.py" script as well as helper scripts to launch all setup/fuzzing/reporting for that specific combination. These are all found in the "run_scripts" folder.
 
@@ -43,7 +43,7 @@ Once all are executable, launch master script via:
 
 This will launch that specific fuzzer against that specifc application.
 
-*Misc. Notes:*
+### *Misc. Notes:*
 
 In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions, all file directory commands can be found starting with: `os.chdir(<file_path>)`
 
