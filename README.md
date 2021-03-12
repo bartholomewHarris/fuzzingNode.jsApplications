@@ -5,13 +5,15 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Temporary setup notes ##
+## Project Notes ##
 
-Requirements:
+*Requirements:*
 
 -Python/pip
 
 -Node
+
+*Setup:*
 
 You may need to set the below environment variables for ZAP before running (location will depend on system - ubuntu is found in "/etc/environment.txt" - requires restart!). Since moving to a local version of zap I have not checked to see if this still needs to be done, so if you get errors when running zap do this bit.
 
@@ -21,15 +23,19 @@ You may need to set the below environment variables for ZAP before running (loca
 
 `ZAP_URL="http://localhost"`
 
-`ZAP_API_KEY="<your zap api key>"`
+`ZAP_API_KEY="<your_zap_api_key>"`
 
-More info on api key here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
+To find your api key: Open ZAP -> Tools -> Options -> API
 
-For each fuzzer/application combination there is specific folder with a run.py script to launch all setup/fuzzing/reporting for that specific combination. These are all found in the "run_scripts" folder.
+More info on api keys here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
+
+*Fuzzing:*
+
+For each fuzzer/application combination there is a specific folder with a master "run.py" script as well as helper scripts to launch all setup/fuzzing/reporting for that specific combination. These are all found in the "run_scripts" folder.
 
 To mark each script as executable:
 
-`chmod +x "script_name.py"`
+`chmod +x "<script_name.py>"`
 
 Once all are executable, launch master script via: 
 
@@ -37,5 +43,9 @@ Once all are executable, launch master script via:
 
 This will launch that specific fuzzer against that specifc application.
 
-In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions all file directory commands are called using `os.chdir(...file_path...)`
+*Misc. Notes:*
+
+In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions, all file directory commands can be found starting with: `os.chdir(<file_path>)`
+
+Where possible, each `run.py` will produce a report of findings - these are stored in the 'reports' folder and will follow the format "fuzzer_application_report.html"
 
