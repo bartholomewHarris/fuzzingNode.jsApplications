@@ -89,7 +89,7 @@ else
   JAVAGC=${DEFAULTJAVAGC}
   if [ "$MEM" -gt 512 ]; then
     # Always go with 1/4 of the available memory - specific JVMs may round this up or down
-    QMEM=$(($MEM/4))
+    QMEM=$(($MEM/2))
     JMEM="-Xmx${QMEM}m"
   fi
 fi
