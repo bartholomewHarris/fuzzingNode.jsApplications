@@ -7,5 +7,5 @@ import os
 os.chdir("./../../../ZAP_2.10.0/")
 
 #launch zap in daemon mode
-subprocess.call('./zap.sh -daemon -config ajaxSpider.maxDuration=10', shell=True)
+subprocess.call('./zap.sh -daemon -config ajaxSpider.maxDuration=180', shell=True)
 
