@@ -37,7 +37,7 @@ print("\nRUN TIME (minutes):")
 print((int)(end-start)/60)
 
 #persist the window to view output
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
 
 #depreciated/old stuff - to delete at a later date
 #subprocess.call('zap-cli quick-scan --spider http://localhost:3000', shell=True)
