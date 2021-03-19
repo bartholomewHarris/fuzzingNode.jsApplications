@@ -27,7 +27,7 @@ jobs:
         run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=3 > /dev/null &
       - name: Wait for ZAP to boot
         run: |
-          chmod +x sleep_test.sh
+          chmod +x ./run_scripts/sleep_test.sh
           ./run_scripts/sleep-test.sh 
       - name: Attack juice-shop
         run: |
