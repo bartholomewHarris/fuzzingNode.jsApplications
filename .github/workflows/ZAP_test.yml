@@ -26,9 +26,9 @@ jobs:
       - name: Run ZAP
         run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=3 > /dev/null &
       - name: Wait for ZAP to boot
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '20s'
+        run: |
+          chmod +x sleep_test.sh
+          ./run_scripts/sleep-test.sh 
       - name: Attack juice-shop
         run: |
           cd ./run_scripts/zap/juiceshop
