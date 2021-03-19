@@ -36,8 +36,8 @@ class Sqlmap(BaseScanner):
 
 	def init(self, argv):
 		self.skip_duplicates = True
-		self.sqlmap_bin = None
-		self.sqlmap_cmd = "sqlmap"
+		self.sqlmap_bin = "./sqlmapproject-sqlmap-6145944"
+		self.sqlmap_cmd = "sqlmap.py"
 		try:
 			opts, args = getopt.getopt(argv, 'hsx:')
 		except getopt.GetoptError as err:
