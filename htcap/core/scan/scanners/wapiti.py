@@ -30,7 +30,7 @@ class Wapiti(BaseScanner):
 
 
 	def init(self, argv):
-		self.wapiti_bin = None
+		self.wapiti_bin = "./wapiti3-3.0.4/bin"
 		self.wapiti_cmd = "wapiti"
 
 		try:

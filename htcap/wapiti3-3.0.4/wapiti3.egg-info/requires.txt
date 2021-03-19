@@ -1,0 +1,15 @@
+requests>=2.25.0
+beautifulsoup4>=4.9.3
+tld>=0.12.2
+yaswfp>=0.9.3
+mako>=1.1.2
+PySocks>=1.7.1
+markupsafe==1.1.1
+six>=1.15.0
+importlib_metadata==2.0.0
+
+[Kerberos]
+requests_kerberos
+
+[NTLM]
+requests_ntlm
