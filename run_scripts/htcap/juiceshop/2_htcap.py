@@ -7,7 +7,7 @@ import os
 os.chdir('./../../../htcap')
 
 #crawl & scan & save report- native/default
-subprocess.call('./htcap.py crawl -w -t 600 -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db \; scan native \; util report htcap_juiceshop_report.html', shell=True)
+subprocess.call('./htcap.py crawl -w -t 60 -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db \; scan native \; scan arachni \; scan sqlmap \; util report htcap_juiceshop_report.html', shell=True)
 
 #move the report to the report folder
 subprocess.call('mv htcap_juiceshop_report.html ./../reports', shell=True)
