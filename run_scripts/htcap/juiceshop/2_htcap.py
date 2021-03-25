@@ -19,4 +19,4 @@ subprocess.call(cmd, shell=True)
 subprocess.call('mv htcap_juiceshop_report.html ./../reports', shell=True)
 
 #persist the window to view results
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
