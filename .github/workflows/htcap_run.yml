@@ -16,7 +16,7 @@ jobs:
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run htcap
         run: |
-          cd /home/bart/fuzzingNode.jsApplications/run_scripts/htcap
+          cd ./run_scripts/htcap
           python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
