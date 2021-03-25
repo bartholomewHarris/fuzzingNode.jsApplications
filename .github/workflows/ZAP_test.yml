@@ -11,8 +11,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Setup dependencies
-        # python -m pip install --upgrade pip
-        run: pip install --upgrade zapcli
+        run: pip install --upgrade git+https://github.com/Grunny/zap-cli.git
       - name: Setup environment variables
         run: |
           echo "ZAP_PATH=./ZAP_2.10.0/zap.sh" >> $GITHUB_ENV
