@@ -7,7 +7,7 @@ import os
 os.chdir('./../../../htcap')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
-SPIDERTIME = 60
+SPIDERTIME = 1800
 
 #form the command
 cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db \; scan native \; scan arachni \; scan sqlmap \; scan wapiti \; util report htcap_juiceshop_report.html" % SPIDERTIME
