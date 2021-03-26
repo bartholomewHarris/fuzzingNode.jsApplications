@@ -17,14 +17,14 @@ jobs:
           curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
           sudo apt-get install -y nodejs
           sudo apt-get install -y build-essential
+          npm i puppeteer
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run htcap
         run: |
-          cd ./run_scripts/htcap/juiceshop
-          npm i puppeteer
+          cd ./run_scripts/htcap/juiceshop          
           python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
