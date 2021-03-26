@@ -22,7 +22,7 @@ jobs:
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run htcap
         run: |
-          cd ./run_scripts/htcap/juiceshop
+          cd ./run_scripts/htcap/juiceshop          
           python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
