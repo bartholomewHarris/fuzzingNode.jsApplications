@@ -23,12 +23,13 @@ jobs:
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run w3af
-        run: sudo /usr/bin/python2.7 w3af_console_docker
+        run: sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
+      - name: Wait for w3af to boot
+        run: |
+          echo "Start sleep 20s"
+          sleep 20
+          echo "Finished sleep"
       - name: Attack with w3af
         run: |
-
-      - name: Export artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: w3af_report
-          path: ./reports/w3af_juiceshop_report.html
+          cd ./run_scripts/w3af/juiceshop
+          python w3af_attack.py
