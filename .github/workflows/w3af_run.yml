@@ -24,7 +24,7 @@ jobs:
       - name: Run w3af
         run: |
           cd ./w3af/extras/docker/scripts
-          sudo /usr/bin/python2.7 w3af_console_docker
+          sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
           profiles
           use sitemap
           back
