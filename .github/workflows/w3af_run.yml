@@ -11,19 +11,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Setup dependencies
-        # python -m pip install --upgrade pip
         run: |
           sudo apt-get update
-          curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          sudo apt-get install -y build-essential
           sudo apt-get install python2.7-minimal
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run w3af
-        run: sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
+        run: |
+          cd ./w3af/extras/docker/scripts
+          sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
       - name: Wait for w3af to boot
         run: |
           echo "Start sleep 20s"
