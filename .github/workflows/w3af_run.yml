@@ -18,6 +18,9 @@ jobs:
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
+      - name: Pull w3af from repo
+        run: |
+        git clone https://github.com/andresriancho/w3af.git
       - name: Run w3af
         run: |
           cd ./w3af/extras/docker/scripts
