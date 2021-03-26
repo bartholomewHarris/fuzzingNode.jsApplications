@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
-name: run_htcap_juiceshop
+name: run_w3af_juiceshop
 on:
   # Run manually
   workflow_dispatch:
@@ -11,25 +11,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Setup dependencies
+        # python -m pip install --upgrade pip
         run: |
           sudo apt-get update
           curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
           sudo apt-get install -y nodejs
           sudo apt-get install -y build-essential
+          sudo apt-get install python2.7-minimal
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
-      - run: |
-          echo "Start sleep 20s"
-          sleep 20
-          echo "Finished sleep"
-      - name: Run htcap
+      - name: Run w3af
+        run: sudo /usr/bin/python2.7 w3af_console_docker
+      - name: Attack with w3af
         run: |
-          cd ./run_scripts/htcap/juiceshop          
-          python 2_htcap.py
+
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: htcap_db
-          path: ./htcap/htcap_juiceshop_report.db
+          name: w3af_report
+          path: ./reports/w3af_juiceshop_report.html
