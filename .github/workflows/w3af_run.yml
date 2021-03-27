@@ -24,11 +24,11 @@ jobs:
       - name: Run w3af
         run: |
           cd ./w3af/extras/docker/scripts
-          sudo /usr/bin/python2.7 w3af_console_docker
+          sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
       - name: Wait for w3af to boot
         run: |
-          echo "Start sleep 20s"
-          sleep 20
+          echo "Start sleep 60s"
+          sleep 60
           echo "Finished sleep"
       - name: Attack with w3af
         run: |
