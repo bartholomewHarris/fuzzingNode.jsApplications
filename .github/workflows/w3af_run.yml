@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-16.04
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -14,25 +14,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install python2.7-minimal
+          sudo apt-get install w3af
+
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
-      - name: Pull w3af from repo
-        run: |
-          git clone https://github.com/andresriancho/w3af.git
-      - name: Run w3af
-        run: |
-          cd ./w3af/extras/docker/scripts
-          sudo /usr/bin/python2.7 w3af_console_docker > /dev/null &
-      - name: Wait for w3af to boot
-        run: |
-          echo "Start sleep 60s"
-          sleep 60
-          echo "Finished sleep"
-      - name: Attack with w3af
-        run: |
-          echo 'profiles'
-          echo 'use sitemap'
-          echo 'back'
-          echo 'exit'
+      - name: Run w3af attack script
+        run: w3af_console -s ~/fuzzingNode.jsApplications/run_scripts/w3af/juiceshop/w3af_attack.w3af
