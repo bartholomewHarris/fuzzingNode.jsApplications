@@ -1,17 +1,6 @@
-profiles use sitemap
-plugins output text_file export_requests
+profiles use fast_scan
+plugins output textFile htmlFile export_requests
 target set target http://127.0.0.1:3000
 start
-cleanup
-profiles use OWASP_TOP10
-plugins
-crawl !all
-crawl import_results
-crawl config import_results
-set input_base64 /home/kali/output-requests.b64
-output html_file text_file export_requests
-back 
-target set target http://127.0.0.1:3000
-start
-exit
+
 exit
