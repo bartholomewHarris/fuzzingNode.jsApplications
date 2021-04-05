@@ -1,0 +1,34 @@
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
+name: arachni_run
+on:
+  # Run manually
+  workflow_dispatch:
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Pull arachni
+        run: |
+          wget https://github.com/Arachni/arachni/releases/download/v1.5.1/arachni-1.5.1-0.5.12-linux-x86_64.tar.gz
+          tar -xvf arachni-1.5.1-0.5.12-linux-x86_64.tar.gz
+      - name: Pull and run juice-shop
+        run: |
+          docker pull bkimminich/juice-shop
+          docker run -d -p 3000:3000 bkimminich/juice-shop
+      - name: Wait for juice-shop to load
+        run: |
+          echo "Start sleep 20s"
+          sleep 20
+          echo "Finished sleep"
+      - name: Attack juice-shop
+        run: |
+          cd /run_scripts/arachni/juiceshop
+          python arachni_attack.py
+      - name: Export artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: arachni_report
+          path: ./reports/arachni_juiceshop_report
