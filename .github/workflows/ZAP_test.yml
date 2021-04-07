@@ -22,7 +22,7 @@ jobs:
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
-          docker run -d -rm -p 3000:3000 bkimminich/juice-shop
+          docker run -d --rm -p 3000:3000 bkimminich/juice-shop
       - name: Run ZAP
         run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=180 > /dev/null &
       - name: Wait for ZAP to boot
