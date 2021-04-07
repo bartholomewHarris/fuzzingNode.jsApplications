@@ -1,4 +1,4 @@
-# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
+# This is a workflow to automate testing using a docker image of juice-shop and arachni console
 name: ZAP_test
 on:
   # Run manually
@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -24,11 +24,12 @@ jobs:
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - name: Run ZAP
-        run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=3 > /dev/null &
+        run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=180 > /dev/null &
       - name: Wait for ZAP to boot
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '20s'
+        run: |
+          echo "Start sleep 20s"
+          sleep 20
+          echo "Finished sleep"
       - name: Attack juice-shop
         run: |
           cd ./run_scripts/zap/juiceshop
