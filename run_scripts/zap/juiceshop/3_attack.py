@@ -19,32 +19,11 @@ subprocess.call('zap-cli scripts enable auth.js', shell=True)
 
 #start timer
 print("\n")
-start1 = time.time()
+start = time.time()
 
-#crawl
-subprocess.call('zap-cli open-url http://localhost:3000', shell=True)
-subprocess.call('zap-cli -v ajax-spider http://localhost:3000 ', shell=True)
-
-#calculate scan time
-end1 = time.time()
-total1 = round(((end1-start1)/60), 2)
-
-#start timer
-print("\n")
-start2 = time.time()
-
-#scan
-subprocess.call('zap-cli -v active-scan -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
-
-#calculate scan time
-end2 = time.time()
-total2 = round(((end2-start2)/60), 2)
-
-#print run times
-print("\nCRAWL TIME (minutes):")
-print((int)(total1))
-print("\nSCAN TIME (minutes):")
-print((int)(total2))
+#run authenticated scan on juiceshop through zap
+#subprocess.call('zap-cli -v quick-scan --spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
+subprocess.call('zap-cli -v quick-scan --ajax-spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
 
 #change directory to where report should be saved
 os.chdir("./../reports")
@@ -52,10 +31,7 @@ os.chdir("./../reports")
 #export results as html file
 subprocess.call('zap-cli report -o zap_juiceshop_report.html -f html', shell=True)
 
-#persist the window to view output
-# input("\n Press enter to close window...")
-
-#DEPRECIATED
-#run authenticated scan on juiceshop through zap
-#subprocess.call('zap-cli -v quick-scan --spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
-#subprocess.call('zap-cli -v quick-scan --ajax-spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
+#print run time
+end = time.time()
+print("\nRUN TIME (minutes):")
+print((int)(end-start)/60)
