@@ -18,11 +18,9 @@ subprocess.call('zap-cli -v scripts load -n auth.js -t "httpsender" -e "Oracle N
 subprocess.call('zap-cli scripts enable auth.js', shell=True)
 
 #start timer
-print("\n")
 start1 = time.time()
 
 #crawl
-print("Opening URL...")
 subprocess.call('zap-cli open-url http://localhost:3000', shell=True)
 subprocess.call('zap-cli -v ajax-spider http://localhost:3000', shell=True)
 
@@ -31,7 +29,6 @@ end1 = time.time()
 total1 = round(((end1-start1)/60), 2)
 
 #start timer
-print("\n")
 start2 = time.time()
 
 #scan
