@@ -1,20 +1,18 @@
-# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
 name: run_htcap_juiceshop
 on:
   # Run manually
   workflow_dispatch:
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Setup dependencies
         run: |
-          sudo apt update
-          sudo apt install nodejs
-          sudo apt install npm
+          curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          sudo apt-get install -y build-essential
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
