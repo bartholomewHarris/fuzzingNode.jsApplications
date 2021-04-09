@@ -26,8 +26,10 @@ jobs:
           echo "Finished sleep"
       - name: Run htcap
         run: |
-          cd ./run_scripts/htcap/juiceshop          
-          python 2_htcap.py
+          # cd ./run_scripts/htcap/juiceshop          
+          # python 2_htcap.py
+          cd ./htcap          
+          echo "./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 ../.github/home/htcap_juiceshop_report.db" >> $GITHUB_ENV
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
