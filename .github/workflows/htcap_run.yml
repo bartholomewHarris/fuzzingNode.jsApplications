@@ -1,4 +1,4 @@
-# This is a workflow to automate testing using a docker image of juice-shop and htcap
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
 name: run_htcap_juiceshop
 on:
   # Run manually
@@ -16,38 +16,18 @@ jobs:
       #    curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
       #    sudo apt-get install -y nodejs
       #    sudo apt-get install -y build-essential
-      
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - run: |
-          echo "Start sleep 10s"
-          sleep 10
+          echo "Start sleep 20s"
+          sleep 20
           echo "Finished sleep"
-
-      - name: Run htcap crawl
+      - name: Run htcap
         run: |
-          cd ./htcap
-          ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db
-      
-      - name: Upload DB
-        uses: actions/upload-artifact@v2
-        with:
-          name: htcap_db
-          path: ./htcap/htcap_juiceshop_report.db
-
-      # - name: Download DB
-      #   uses: actions/download-artifact@v2
-      #   with:
-      #     name: htcap_db
-      #     path: ./htcap/htcap_juiceshop_report.db
-      
-      - name: Run htcap scans
-        run : |
-          cd ./htcap
-          ./htcap.py scan native htcap_juiceshop_report.db \; util report_juiceshop_report.html
-
+          cd ./run_scripts/htcap/juiceshop          
+          python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
