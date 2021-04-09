@@ -6,7 +6,7 @@ import os
 #change to htcap directory
 os.chdir('./../../../htcap')
 
-subprocess.call("npm i puppeteer@1.20.0", shell=True)
+# subprocess.call("npm i puppeteer@1.20.0", shell=True)
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 20
