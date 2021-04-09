@@ -11,21 +11,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Setup dependencies
-        # python -m pip install --upgrade pip
-        run: |
-          sudo apt update
-          sudo apt install nodejs
-          sudo apt install npm
+       run: |
+        sudo apt update
+        sudo apt install nodejs
+        sudo apt install npm
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
+      - run: |
+          echo "Start sleep 10s"
+          sleep 10
+          echo "Finished sleep"
       - name: Run htcap
         run: |
-          cd ./run_scripts/htcap/juiceshop
+          cd ./run_scripts/htcap/juiceshop          
           python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ZAP_report
+          name: htcap_report
           path: ./reports/htcap_juiceshop_report.html
