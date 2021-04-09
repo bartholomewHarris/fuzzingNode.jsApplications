@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup dependencies
        run: |
-        sudo apt update
-        sudo apt install nodejs
-        sudo apt install npm
+          sudo apt update
+          sudo apt install nodejs
+          sudo apt install npm
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
