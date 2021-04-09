@@ -13,8 +13,8 @@ jobs:
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
-      - run: |
-          npm i puppeteer@1.20.0
+      # - run: |
+      #     npm i puppeteer@1.20.0
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/juiceshop          
