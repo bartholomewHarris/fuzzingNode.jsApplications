@@ -14,7 +14,6 @@ cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://local
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
-subprocess.call(cmd, shell=True)
 
 #move the report to the report folder
 subprocess.call('mv htcap_juiceshop_report.html ./../reports', shell=True)
