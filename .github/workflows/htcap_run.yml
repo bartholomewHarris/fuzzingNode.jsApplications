@@ -28,7 +28,8 @@ jobs:
 
       - name: Run htcap crawl
         run: |
-          cd ./htcap          
+          cd ./htcap
+          pwd
           ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db
       
       - name: Upload DB
@@ -45,7 +46,8 @@ jobs:
       
       - name: Run htcap scans
         run : |
-          ./htcap scan native htcap_juiceshop_report.db \; util report_juiceshop_report.html
+          pwd
+          ./htcap.py scan native htcap_juiceshop_report.db \; util report_juiceshop_report.html
 
       - name: Export artifact
         uses: actions/upload-artifact@v2
