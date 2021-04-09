@@ -29,7 +29,12 @@ jobs:
           # cd ./run_scripts/htcap/juiceshop          
           # python 2_htcap.py
           cd ./htcap          
-          ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 ../.github/home/htcap_juiceshop_report.db >> $GITHUB_ENV
+          ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 ../.github/home/htcap_juiceshop_report.db
+        uses: actions/upload-artifact@v2
+        with:
+          name: htcap_db
+          path: ./.github/home/htcap_juiceshop_report.db
+      # - name: run scan here
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
