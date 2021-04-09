@@ -13,7 +13,6 @@ jobs:
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
-      - name: Sleep
       - run: |
           echo "Start sleep 10s"
           sleep 10
