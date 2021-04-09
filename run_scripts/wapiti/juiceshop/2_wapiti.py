@@ -8,7 +8,7 @@ subprocess.call("sudo apt install rename", shell=True)
 os.chdir("../../../")
 
 #form the command
-cmd = "wapiti -u http://localhost:3000 --scope domain -o ./reports/wapiti"
+cmd = "wapiti -u http://localhost:3000 --flush-session --scope domain -o ./reports/wapiti"
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)

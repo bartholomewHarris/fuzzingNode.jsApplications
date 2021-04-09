@@ -21,7 +21,7 @@ jobs:
           echo "Start sleep 20s"
           sleep 20
           echo "Finished sleep"
-      - name: Run htcap
+      - name: Run wapiti
         run: |
           cd ./run_scripts/wapiti/juiceshop          
           python 2_wapiti.py
