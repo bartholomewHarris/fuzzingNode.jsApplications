@@ -38,7 +38,7 @@ jobs:
           path: ./htcap/htcap_juiceshop_report.db
 
       - name: Download DB
-        uses: actions/upload-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: htcap_db
           path: ./htcap/htcap_juiceshop_report.db
