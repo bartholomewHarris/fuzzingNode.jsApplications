@@ -3,8 +3,10 @@
 import subprocess
 import os
 
+#get rename
 subprocess.call("sudo apt install rename", shell=True)
 
+#move dir
 os.chdir("../../../")
 
 #auth string
@@ -16,7 +18,7 @@ cmd = "wapiti -u http://localhost:3000 -d 10 -a %s --auth-type=post -s http://lo
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
 
-#re-name report
+#re-name and save report
 os.chdir("./reports/wapiti")
 subprocess.call("rename 's/localhost_3000_.*.html/wapiti_juiceshop_report.html/' *", shell=True)
 
