@@ -3,7 +3,6 @@ name: run_htcap_juiceshop
 on:
   # Run manually
   workflow_dispatch:
-
 jobs:
   build:
     # The type of runner that the job will run on
@@ -33,10 +32,12 @@ jobs:
           # python 2_htcap.py
           cd ./htcap          
           ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 ../.github/home/htcap_juiceshop_report.db
+      
+      - name: upload db
         uses: actions/upload-artifact@v2
         with:
           name: htcap_db
-          path: ./.github/home/htcap.db
+          path: ./.github/home/htcap_juiceshop_report.db
 
       - name: Export artifact
         uses: actions/upload-artifact@v2
