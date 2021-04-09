@@ -21,8 +21,8 @@ jobs:
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - run: |
-          echo "Start sleep 20s"
-          sleep 20
+          echo "Start sleep 10s"
+          sleep 10
           echo "Finished sleep"
       - name: Run htcap
         run: |
