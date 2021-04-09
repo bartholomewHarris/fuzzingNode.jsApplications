@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       #- name: Setup dependencies
@@ -16,13 +16,6 @@ jobs:
       - run: |
           echo "Start sleep 10s"
           sleep 10
-      - name: Install wapiti
-        run: |
-          pip install wapiti3    
-      - name: Run wapiti
-        run: |
-          cd ./run_scripts/wapiti/juiceshop          
-          python 2_wapiti.py
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/juiceshop          
