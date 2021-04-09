@@ -13,7 +13,7 @@ os.chdir("../../../")
 login = "admin@juice-sh.op"+"%"+"admin123"
 
 #form the command
-cmd = "wapiti -u http://localhost:3000 -d 10 -a %s --auth-type=post -s http://localhost:3000/#/login --flush-session --scope domain -m all -l 2 -S aggressive -o ./reports/wapiti" %login
+cmd = "wapiti -u http://localhost:3000 --scope domain -d 10 -a %s --auth-type=post -s http://localhost:3000/#/login --flush-session  -m all -l 2 -S aggressive -o ./reports/wapiti" %login
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
