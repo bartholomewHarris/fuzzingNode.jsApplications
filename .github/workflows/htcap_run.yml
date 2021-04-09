@@ -29,24 +29,23 @@ jobs:
       - name: Run htcap crawl
         run: |
           cd ./htcap
-          pwd
           ./htcap.py crawl -w -t 20 -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db
       
       - name: Upload DB
         uses: actions/upload-artifact@v2
         with:
           name: htcap_db
-          path: htcap_juiceshop_report.db
+          path: ./htcap/htcap_juiceshop_report.db
 
       - name: Download DB
         uses: actions/upload-artifact@v2
         with:
           name: htcap_db
-          path: htcap_juiceshop_report.db
+          path: ./htcap/htcap_juiceshop_report.db
       
       - name: Run htcap scans
         run : |
-          pwd
+          cd ./htcap
           ./htcap.py scan native htcap_juiceshop_report.db \; util report_juiceshop_report.html
 
       - name: Export artifact
