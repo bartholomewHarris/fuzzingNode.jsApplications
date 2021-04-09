@@ -1,26 +1,22 @@
 # This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
 name: run_htcap_juiceshop
 on:
-  # Run manually
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Setup dependencies
-        run: |
-          curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          sudo apt-get install -y build-essential
+      #- name: Setup dependencies
+      #  run: |
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
+      - name: Sleep
       - run: |
           echo "Start sleep 10s"
           sleep 10
-          echo "Finished sleep"
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/juiceshop          
