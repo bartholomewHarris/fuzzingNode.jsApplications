@@ -6,9 +6,10 @@ import os
 subprocess.call("sudo apt install rename", shell=True)
 
 os.chdir("../../../")
+login = "admin@juice-sh.op"+"%"+"admin123"
 
 #form the command
-cmd = "wapiti -u http://localhost:3000 -s http://localhost:3000/#/login --flush-session --scope domain -m all -o ./reports/wapiti"
+cmd = "wapiti -u http://localhost:3000 -d 10 -a %s --auth-type=post -s http://localhost:3000/#/login --flush-session --scope domain -o ./reports/wapiti" %login
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
