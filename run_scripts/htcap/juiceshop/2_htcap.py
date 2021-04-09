@@ -10,12 +10,10 @@ os.chdir('./../../../htcap')
 SPIDERTIME = 20
 
 #form the command
-cmd = "./htcap.py crawl -w -t %d http://localhost:3000/ htcap_juiceshop_report.db" % SPIDERTIME
+cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/ htcap_juiceshop_report.db \; scan native \; scan wapiti \; scan sqlmap \; util report htcap_juiceshop_report.html" % SPIDERTIME
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
-
-cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/ htcap_juiceshop_report.db \; scan native \; scan wapiti \; scan sqlmap \; util report htcap_juiceshop_report.html" % SPIDERTIME
 subprocess.call(cmd, shell=True)
 
 #move the report to the report folder
