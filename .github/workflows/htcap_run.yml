@@ -37,11 +37,11 @@ jobs:
           name: htcap_db
           path: ./htcap/htcap_juiceshop_report.db
 
-      - name: Download DB
-        uses: actions/download-artifact@v2
-        with:
-          name: htcap_db
-          path: ./htcap/htcap_juiceshop_report.db
+      # - name: Download DB
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: htcap_db
+      #     path: ./htcap/htcap_juiceshop_report.db
       
       - name: Run htcap scans
         run : |
