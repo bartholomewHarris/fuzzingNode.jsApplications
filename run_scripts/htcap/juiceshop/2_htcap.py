@@ -6,17 +6,16 @@ import os
 #change to htcap directory
 os.chdir('./../../../htcap')
 
-subprocess.call("sudo apt-get install chromium-browser", shell=True)
-
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 20
 
 #form the command
-# cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/ htcap_juiceshop_report.db \; scan native \; scan wapiti \; scan sqlmap \; util report htcap_juiceshop_report.html" % SPIDERTIME
-cmd = "./htcap.py crawl -t %d http://localhost:3000/ htcap_juiceshop_report.db \; util report htcap_juiceshop_report.html" % SPIDERTIME
-
+cmd = "./htcap.py crawl -w -t %d http://localhost:3000/ htcap_juiceshop_report.db" % SPIDERTIME
 
 #crawl & scan & save report - native+sqlmap+wapiti
+subprocess.call(cmd, shell=True)
+
+cmd = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/ htcap_juiceshop_report.db \; scan native \; scan wapiti \; scan sqlmap \; util report htcap_juiceshop_report.html" % SPIDERTIME
 subprocess.call(cmd, shell=True)
 
 #move the report to the report folder
