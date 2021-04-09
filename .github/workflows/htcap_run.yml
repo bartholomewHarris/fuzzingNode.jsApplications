@@ -16,6 +16,10 @@ jobs:
       - run: |
           echo "Start sleep 10s"
           sleep 10
+      - name: Run wapiti
+        run: |
+          cd ./run_scripts/wapiti/juiceshop          
+          python 2_wapiti.py
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/juiceshop          
