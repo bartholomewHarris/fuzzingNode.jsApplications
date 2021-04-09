@@ -10,13 +10,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      #- name: Setup dependencies
-      #  run: |
-      #    sudo apt-get update
-      #    curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-      #    sudo apt-get install -y nodejs
-      #    sudo apt-get install -y build-essential
-      - name: Pull wapiti
+      - name: Install wapiti
         run: |
           pip install wapiti3
       - name: Pull and run juice-shop
@@ -35,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wapiti_report
-          path: ./reports/wapiti_juiceshop_report.html
+          path: ./reports/wapiti/wapiti_juiceshop_report.html
