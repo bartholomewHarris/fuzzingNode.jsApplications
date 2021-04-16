@@ -13,7 +13,11 @@ jobs:
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
+      - run: |
+          echo "Start sleep 10s"
           sleep 10
+      - name: Run htcap
+        run: |
           cd ./run_scripts/htcap/juiceshop          
           python 2_htcap.py
       - name: Export artifact
