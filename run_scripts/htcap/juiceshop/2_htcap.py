@@ -6,7 +6,9 @@ import time
 
 #change to htcap directory
 os.chdir('./../../../htcap')
+os.chdir('core/nodejs', shell=True)
 subprocess.call("npm i", shell=True)
+os.chdir('../../', shell=True)
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 10800
