@@ -8,13 +8,13 @@ import time
 os.chdir('./../../../htcap')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
-SPIDERTIME = 180
+SPIDERTIME = 60
 
 #start timer
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/#/ htcap_juiceshop_report.db" % SPIDERTIME
+crawl = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. -L login.json http://localhost:3000/ htcap_juiceshop_report.db" % SPIDERTIME
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)

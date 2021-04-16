@@ -1,0 +1,11 @@
+{
+    "type":"standalone",
+    "url":"http://localhost:3000/",
+    "sequence": [
+        ["click", "#navbarAccount"],
+        ["clickToNavigate", "#navbarLoginButton", [2]],
+        ["write", "#email", "admin@juice-sh.op"],
+        ["write", "#password", "admin123"],
+        ["click", "#loginButton"]
+    ]
+}
