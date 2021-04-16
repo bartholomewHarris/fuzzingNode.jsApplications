@@ -16,10 +16,6 @@ jobs:
       - run: |
           cd ./htcap
           docker build -t htcap --build-arg HTCAP_VERSION=master .
-          mkdir -p htcap-out && docker run -v "$(pwd)/htcap-out/":/out/ --rm --name htcap htcap
-          docker exec -it htcap bash
-          cd ../run_scripts/htcap/juiceshop          
-          python 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
