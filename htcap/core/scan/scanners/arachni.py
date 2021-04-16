@@ -36,7 +36,7 @@ class Arachni(BaseScanner):
 		self.skip_duplicates = True
 		self.execute_command = True
 		self.audit_both_methods = False
-		self.arachni_bin = "./arachni-1.5.1-0.5.12/bin"
+		self.arachni_bin = None
 		self.acmd = "arachni"
 		self.rcmd = "arachni_reporter"
 
