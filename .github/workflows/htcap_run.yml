@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Setup dependencies
-        run: |
-          # cd ./htcap/core/nodejs
-          # npm i
+      # - name: Setup dependencies
+      #   run: |
+      #     # cd ./htcap/core/nodejs
+      #     # npm i
       - name: Pull and run juice-shop
         run: |
           docker pull bkimminich/juice-shop

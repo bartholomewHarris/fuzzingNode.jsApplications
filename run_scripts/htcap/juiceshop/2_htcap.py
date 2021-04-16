@@ -7,9 +7,9 @@ import time
 #change to htcap directory
 os.chdir('./../../../htcap')
 
-os.chdir('core/nodejs/node_modules/')
-subprocess.call("npm i puppeteer@1.20.0", shell=True)
-os.chdir('../../../')
+# os.chdir('core/nodejs/node_modules/')
+# subprocess.call("npm i puppeteer@1.20.0", shell=True)
+# os.chdir('../../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 20
