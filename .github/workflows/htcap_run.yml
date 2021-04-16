@@ -13,6 +13,7 @@ jobs:
         run: |
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
+          sleep 10
           cd ./run_scripts/htcap/juiceshop          
           python 2_htcap.py
       - name: Export artifact
