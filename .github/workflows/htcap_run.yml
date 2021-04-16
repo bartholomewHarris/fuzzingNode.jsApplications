@@ -5,6 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [14.16.0]
     steps:
       - uses: actions/checkout@v2
       # - name: Setup dependencies
