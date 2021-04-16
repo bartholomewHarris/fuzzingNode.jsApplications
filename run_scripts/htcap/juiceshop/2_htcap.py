@@ -14,7 +14,7 @@ SPIDERTIME = 180
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000 htcap_juiceshop_report.db" % SPIDERTIME
+crawl = "./htcap.py crawl -w -t %d -x http://localhost:3000/redirect. http://localhost:3000/#/ htcap_juiceshop_report.db" % SPIDERTIME
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
