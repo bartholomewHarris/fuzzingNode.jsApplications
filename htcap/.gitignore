@@ -1,6 +1,0 @@
-*.py[cod]
-tmp.py
-tmp
-.*
-!/.gitignore
-package-lock.json
