@@ -14,8 +14,11 @@ jobs:
           docker pull bkimminich/juice-shop
           docker run -d -p 3000:3000 bkimminich/juice-shop
       - run: |
-          echo "Start sleep 10s"
-          sleep 10
+          cd ./htcap
+          docker build -t htcap --build-arg HTCAP_VERSION=master .
+          mkdir -p htcap-out && docker run -v "$(pwd)/htcap-out/":/out/ --rm --name htcap htcap
+          docker exec -it htcap bash
+          htcap
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/juiceshop          
