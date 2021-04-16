@@ -6,13 +6,10 @@ import time
 
 #change to htcap directory
 os.chdir('./../../../htcap')
-
-# os.chdir('core/nodejs/node_modules/')
-# subprocess.call("npm i puppeteer@1.20.0", shell=True)
-# os.chdir('../../../')
+subprocess.call("npm i", shell=True)
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
-SPIDERTIME = 20
+SPIDERTIME = 10800
 
 #start timer
 start1 = time.time()
@@ -52,4 +49,4 @@ print("\nSCAN TIME (minutes):")
 print((int)(total2))
 
 #persist the window to view results
-#input("\n Press enter to close window...")
+input("\n Press enter to close window...")
