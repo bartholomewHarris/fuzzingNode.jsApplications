@@ -16,6 +16,7 @@ jobs:
       - run: |
           cd ./htcap
           docker build -t htcap --build-arg HTCAP_VERSION=master .
+          mkdir -p htcap-out && docker run -v "$(pwd)/htcap-out/":/out/ --rm --name htcap htcap
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
