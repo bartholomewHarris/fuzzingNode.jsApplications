@@ -12,7 +12,7 @@ subprocess.call("npm i puppeteer@1.20.0", shell=True)
 os.chdir('../../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
-SPIDERTIME = 60
+SPIDERTIME = 20
 
 #start timer
 start1 = time.time()
