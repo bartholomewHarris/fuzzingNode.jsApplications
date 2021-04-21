@@ -14,6 +14,9 @@ subprocess.call('zap-cli context import NodeGoat-Auth.context', shell=True)
 #disable auth script if present
 subprocess.call('zap-cli scripts disable auth.js', shell=True)
 
+#load auth script
+# subprocess.call('zap-cli -v scripts load -n nodegoat-login.zst -t "Authentication" -e "Mozilla Zest" -f ./scripts/nodegoat-login.zst', shell=True)
+
 #start timer
 start1 = time.time()
 
