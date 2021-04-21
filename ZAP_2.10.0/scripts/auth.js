@@ -16,6 +16,7 @@ function sendingRequest(msg, initiator, helper) {
   }
 
   var token = ScriptVars.getGlobalVar("jwt-token")
+  // var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0QWRtaW4ucG5nIiwidG90cFNlY3JldCI6IiIsImlzQWN0aXZlIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTIxIDAzOjMwOjI2LjYwNSArMDA6MDAiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTIxIDAzOjMwOjI2LjYwNSArMDA6MDAiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE2MTg5NzYzNDAsImV4cCI6MTYxODk5NDM0MH0.FLcEE2qDKJF0z0v241WNPNc-j7H_fywK-00sg7Q4vobqcFw-EcmJKkjFF_IoHITgMVhZE_Yi2yVOKgQvzmXB1OZxzkzJtAZ3u0-G5-FCDAzLxqDhgcyxI-LMGc1_oQaGrTPGL3mnKodxC5t_Gts7HIKafGgWJpo2dB8ukgj1Yys"
   if (!token) {return;}
   var headers = msg.getRequestHeader();
   var cookie = new HtmlParameter(COOKIE_TYPE, "token", token);
@@ -32,6 +33,7 @@ function responseReceived(msg, initiator, helper) {
 
   if (initiator !== HttpSender.AUTHENTICATION_INITIATOR) {
      var token = ScriptVars.getGlobalVar("jwt-token");
+    // var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0QWRtaW4ucG5nIiwidG90cFNlY3JldCI6IiIsImlzQWN0aXZlIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTIxIDAzOjMwOjI2LjYwNSArMDA6MDAiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTIxIDAzOjMwOjI2LjYwNSArMDA6MDAiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE2MTg5NzYzNDAsImV4cCI6MTYxODk5NDM0MH0.FLcEE2qDKJF0z0v241WNPNc-j7H_fywK-00sg7Q4vobqcFw-EcmJKkjFF_IoHITgMVhZE_Yi2yVOKgQvzmXB1OZxzkzJtAZ3u0-G5-FCDAzLxqDhgcyxI-LMGc1_oQaGrTPGL3mnKodxC5t_Gts7HIKafGgWJpo2dB8ukgj1Yys"
      if (!token) {return;}
 
      var headers = msg.getRequestHeader();
