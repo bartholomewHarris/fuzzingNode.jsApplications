@@ -8,8 +8,6 @@ import time
 os.chdir('./../../../htcap')
 os.chdir('core/nodejs')
 subprocess.call("npm i", shell=True)
-# subprocess.call("npm install sqlite", shell=True)
-# subprocess.call("npm install sqlite3", shell=True)
 os.chdir('../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
@@ -19,8 +17,8 @@ SPIDERTIME = 10800
 start1 = time.time()
 
 #form the command
-# crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
-crawl = "./htcap.py crawl -w -t %d https://htcap.org/scanme htcap_nodegoat_report.db" % SPIDERTIME
+crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json localhost:4000/ htcap_nodegoat_report.db" % SPIDERTIME
+# crawl = "./htcap.py crawl -w -t %d http://htcap.org/scanme htcap_nodegoat_report.db" % SPIDERTIME
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
