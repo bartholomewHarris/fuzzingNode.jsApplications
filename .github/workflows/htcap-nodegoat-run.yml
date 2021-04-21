@@ -30,6 +30,7 @@ jobs:
           echo "Start sleep 10s"
           sleep 10
       - name: Run htcap
+        uses: actions/upload-artifact@v2
         run: |
           cd ./run_scripts/htcap/nodegoat        
           python 2_htcap.py
