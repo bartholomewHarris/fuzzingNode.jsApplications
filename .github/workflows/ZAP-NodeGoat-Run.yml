@@ -29,6 +29,8 @@ jobs:
       - name: Pull and run juice-shop
         run: |
           cd ./nodegoat/NodeGoat
+          sudo systemctl start mongod
+          npm run db:seed
           docker-compose build
           docker-compose up
       - name: Run ZAP
