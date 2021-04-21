@@ -36,5 +36,5 @@ jobs:
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: htcap_report
+          name: htcap_nodegoat_report
           path: ./reports/htcap_nodegoat_report.html
