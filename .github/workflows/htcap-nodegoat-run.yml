@@ -1,0 +1,40 @@
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
+name: run_htcap_juiceshop
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [14.16.0]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup dependencies
+        run: |
+          # install mongo db
+          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo systemctl start mongod
+          sudo systemctl status mongod
+      - name: Run NodeGoat
+        run: |
+          cd ./nodegoat/NodeGoat
+          sudo systemctl start mongod
+          npm run db:seed
+          docker-compose build
+          docker-compose up -d
+      - run: |
+          echo "Start sleep 10s"
+          sleep 10
+      - name: Run htcap
+        run: |
+          cd ./run_scripts/htcap/nodegoat        
+          python 2_htcap.py
+      - name: Export artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: htcap_report
+          path: ./reports/htcap_nodegoat_report.html

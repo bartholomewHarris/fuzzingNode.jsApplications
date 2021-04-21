@@ -1,0 +1,12 @@
+{
+    "type":"shared",
+    "cookies":["connect.sid"],
+    "url":"http://localhost:4000/login",
+    "loggedinCondition":"<title>OWASP Node.js Goat Project</title>",
+    "sequence": [
+        ["write", "#userName", "admin"],
+        ["write", "#password", "Admin_123"],
+        ["clickToNavigate", "#loginform > div.row > div.col-lg-3 > button", 5000],
+        ["assertLoggedin"]
+    ]
+}
