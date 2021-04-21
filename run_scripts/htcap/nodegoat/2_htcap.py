@@ -8,6 +8,8 @@ import time
 os.chdir('./../../../htcap')
 os.chdir('core/nodejs')
 subprocess.call("npm i", shell=True)
+subprocess.call("npm install sqlite", shell=True)
+subprocess.call("npm install sqlite3", shell=True)
 os.chdir('../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
@@ -51,4 +53,4 @@ print("\nSCAN TIME (minutes):")
 print((int)(total2))
 
 #persist the window to view results
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
