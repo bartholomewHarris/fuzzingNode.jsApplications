@@ -20,7 +20,7 @@ start1 = time.time()
 #crawl
 subprocess.call('zap-cli open-url http://localhost:4000', shell=True)
 subprocess.call('zap-cli -v spider -c NodeGoat-Auth -u admin http://localhost:4000', shell=True)
-subprocess.call('zap-cli -v ajax-spider http://localhost:4000/benefits', shell=True)
+subprocess.call('zap-cli -v ajax-spider http://localhost:4000', shell=True)
 
 #calculate scan time
 end1 = time.time()
