@@ -28,7 +28,7 @@ jobs:
           echo "ZAP_URL=http://localhost" >> $GITHUB_ENV
       - name: Pull and run juice-shop
         run: |
-          cd ./nodegost/NodeGoat
+          cd ./nodegoat/NodeGoat
           docker-compose build
           docker-compose up
       - name: Run ZAP
