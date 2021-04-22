@@ -23,4 +23,4 @@ os.chdir("./reports/wapiti")
 subprocess.call("rename 's/localhost_4000_.*.html/wapiti_nodegoat_report.html/' *", shell=True)
 
 #persist the window to view results
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
