@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of nodegoat and locally installed ZAP
-name: run_nodegoat_zap
+name: run_zap_nodegoat
 on:
   # Run manually
   workflow_dispatch:
