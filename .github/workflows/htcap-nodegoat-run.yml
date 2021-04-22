@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
-name: run_htcap_nodegoat_run
+name: run_htcap_nodegoat
 on:
   workflow_dispatch:
 jobs:
