@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop locally installed ZAP
-name: ZAP_test
+name: run_zap_juiceshop
 on:
   # Run manually
   workflow_dispatch:
