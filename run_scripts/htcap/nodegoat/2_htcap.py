@@ -17,7 +17,8 @@ SPIDERTIME = 10800
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json -p http:localhost:8080 http:localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
+# crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json -p http:localhost:8080 http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
+crawl = "./htcap.py crawl -w -t %d -p http:localhost:4000 http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
