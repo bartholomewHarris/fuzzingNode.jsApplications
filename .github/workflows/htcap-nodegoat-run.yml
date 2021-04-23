@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
-name: run_htcap_nodegoat
+name: run_htcap_nodegoat_run
 on:
   workflow_dispatch:
 jobs:
@@ -10,12 +10,6 @@ jobs:
         node-version: [14.16.0]
     steps:
       - uses: actions/checkout@v2
-      - uses: nanasess/setup-chromedriver@master
-      - run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
-      - uses: ianwalter/puppeteer-container@v4.0.0
       - name: Setup dependencies
         run: |
           # install mongo db
