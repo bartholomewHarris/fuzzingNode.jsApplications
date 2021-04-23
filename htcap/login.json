@@ -1,0 +1,12 @@
+{
+    "type":"shared",
+    "cookies":[""],
+    "url":"localhost:3000/",
+    "sequence": [
+        ["clickToNavigate", "#navbarAccount", 1500],
+        ["clickToNavigate", "#navbarLoginButton", 3500],
+        ["write", "#email", "admin@juice-sh.op"],
+        ["write", "#password", "admin123"],
+        ["clickToNavigate", "#loginButton", 1500]
+    ]
+}

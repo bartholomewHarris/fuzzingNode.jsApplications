@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop locally installed ZAP
-name: ZAP_test
+name: run_zap_juiceshop
 on:
   # Run manually
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
       - name: Attack juice-shop
         run: |
           cd ./run_scripts/zap/juiceshop
-          python 3_attack.py
+          python 3_attack.py          
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:

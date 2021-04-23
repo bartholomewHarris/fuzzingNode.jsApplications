@@ -1,7 +1,0 @@
-*.py[cod]
-tmp.py
-tmp
-node_modules/
-.*
-!/.gitignore
-package-lock.json
