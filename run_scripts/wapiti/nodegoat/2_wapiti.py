@@ -13,7 +13,7 @@ os.chdir("../../../")
 login = "admin"+"%"+"Admin_123"
 
 #form the command
-cmd = "wapiti -u http://localhost:4000 --scope domain -d 10 -a %s --auth-type=post -s http://localhost:4000/login --flush-session -l 2 -S aggressive --color --max-attack-time 10800 -o ./reports/wapiti" %login
+cmd = "wapiti -u http://localhost:4000 --scope domain -d 10 -a %s --auth-type=post -s http://localhost:4000/login --flush-session -l 2 -S normal --color -m all --max-attack-time 10800 -o ./reports/wapiti" %login
 
 #crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
