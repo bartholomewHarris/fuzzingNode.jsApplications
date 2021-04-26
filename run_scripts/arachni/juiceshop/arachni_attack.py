@@ -3,7 +3,14 @@
 import subprocess
 import os
 
-os.chdir("./../../../arachni-1.3-0.5.8/bin")
+os.chdir("./../../../arachni-1.5.1-0.5.12/bin")
 
-subprocess.call('./arachni --output-verbose --output-only-positives --scope-include-subdomains --scope-exclude-pattern http://127.0.0.1:3000/redirect \
-    --report-save-path /reports/arachni_juiceshop_report <HOSTNAME>', shell=True)
+hostname = subprocess.check_output('hostname')
+
+target = 'http://' + hostname + ':3000'
+
+exclude = target + '/redirect '
+
+command = './arachni --output-verbose --output-only-positives --scope-include-subdomains --scope-exclude-pattern ' + exclude + '--report-save-path /reports/arachni_juiceshop_report' + target, shell=True)
+
+subprocess.call(command)
