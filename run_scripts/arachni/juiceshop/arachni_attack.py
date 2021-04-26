@@ -8,13 +8,15 @@ os.chdir("./../../../arachni-1.5.1-0.5.12/bin")
 hostname = subprocess.check_output(["hostname"])
 hostname = hostname.decode("utf-8")
 
-target = "http://" + hostname + ":3000"
+target = "http://" + hostname 
+target = target.rstrip("\n")
+target = target + ":3000"
 
 exclude = target + "/redirect"
 
-command = "'./arachni --output-verbose --output-only-positives --scope-include-subdomains --scope-exclude-pattern "
-command = command + exclude + " --report-save-path /reports/arachni_juiceshop_report " + target + "'"
+command = "./arachni --output-verbose --output-only-positives --scope-include-subdomains --scope-exclude-pattern "
+command = command + exclude + " --report-save-path /reports/arachni_juiceshop_report " + target
 
 simple_scan = "./arachni " + target
 
-subprocess.call(simple_scan, shell=True)
+subprocess.call(command, shell=True)
