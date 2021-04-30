@@ -19,3 +19,5 @@ command = command + exclude + " --report-save-path arachni_report.afr --timeout 
 command = command + "--http-authentication-username admin@juice-sh.op --http-authentication-password admin123 " + target
 
 subprocess.call(command, shell=True)
+
+subprocess.call("./arachni_reporter arachni_report.afr --reporter=html:outfile=arachni_report.html.zip", shell=True)
