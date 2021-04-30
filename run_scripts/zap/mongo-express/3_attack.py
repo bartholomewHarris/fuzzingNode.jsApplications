@@ -49,4 +49,4 @@ os.chdir("./../reports")
 subprocess.call('zap-cli report -o zap_mongoexpress_report.html -f html', shell=True)
 
 #persist the window to view output
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")

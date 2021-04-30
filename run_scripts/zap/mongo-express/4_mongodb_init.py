@@ -355,4 +355,4 @@ users = db.users
 result = users.insert_many(entries)
 
 #persist the window to view output
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
