@@ -41,8 +41,10 @@ jobs:
           python 4_mongodb_init.py
       - name: Start mongo-express
         run: |
-          cd ./run_scripts/zap/mongo-express
-          python detacher.py
+          docker run -it --rm -d -p 8081:8081 --network localhost mongo-express
+          # mongo-express -H localhost -P 27017
+          # cd ./run_scripts/zap/mongo-express
+          # python detacher.py
       - name: Run ZAP
         run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=180 > /dev/null &
       - name: Wait for ZAP to boot
