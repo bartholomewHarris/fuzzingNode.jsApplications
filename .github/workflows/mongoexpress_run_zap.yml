@@ -45,7 +45,7 @@ jobs:
           docker pull mongo
           docker run --name mydb -d mongo:latest
           docker pull mongo-express
-          docker run -it --rm -d --name expressdb -p 8081:8081 --network my-network mongo-express
+          docker run -it --rm -d --name expressdb -p 8081:8081 --network my-network -e ME_CONFIG_MONGODB_URL="http://localhost:27017" mongo-express
           # mongo-express -H localhost -P 27017
           # cd ./run_scripts/zap/mongo-express
           # python detacher.py
