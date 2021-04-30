@@ -28,7 +28,7 @@ jobs:
           sudo systemctl start mongod          
       - name: Get Mongo-Express
         run: |
-          npm install -g mongo-express
+          sudo npm install -g mongo-express
       - name: Install pymongo
         run: |
           pip install pymongo
