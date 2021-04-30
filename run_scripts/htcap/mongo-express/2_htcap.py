@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import subprocess
 import os
@@ -12,21 +12,14 @@ os.chdir('../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 10800
-
-# admin = b"admin".decode('utf-8')
-# pwd = b"pass".decode('utf-8')
-admin = 'admin'
-pwd = 'pass'
-# print(admin)
-# print(pwd)
-# print(type(admin))
-# print(type(pwd))
+admin = b"admin"
+pwd = b"pass"
 
 #start timer
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -w -t %d -A %s:%s http://localhost:8081 htcap_mongoexpress_report.db" % (SPIDERTIME, admin, pwd)
+crawl = "./htcap.py crawl -A %s:%s -w -t %d http://localhost:8081 htcap_mongoexpress_report.db" % (admin, pwd, SPIDERTIME)
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
