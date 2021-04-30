@@ -38,6 +38,10 @@ jobs:
         run: |
           cd ./run_scripts/zap/mongo-express
           python 4_mongodb_init.py
+  detach:
+    needs: setup
+    runs-on: ubuntu-20.04
+    steps:
       - name: Start mongo-express
         run: |
           mongo-express -H localhost -P 27017
