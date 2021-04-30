@@ -36,7 +36,7 @@ jobs:
       - name: Attack mongo
         run: |
           cd ./run_scripts/htcap/mongo-express
-          python 2_attack.py         
+          python 2_htcap.py         
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
