@@ -42,7 +42,7 @@ jobs:
         run: |
           mongo-express -H localhost -P 27017
   launch:
-    # The type of runner that the job will run on
+    needs: setup
     runs-on: ubuntu-20.04
     steps:
       - name: Run ZAP
