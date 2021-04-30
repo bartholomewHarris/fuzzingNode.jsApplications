@@ -29,6 +29,9 @@ jobs:
       - name: Get Mongo-Express
         run: |
           sudo npm install -g mongo-express
+      - name: Set custom config.js
+        run: |
+          sudo mv ./config.js /usr/local/lib/node_modules/mongo-express/
       - name: Install pymongo
         run: |
           pip install pymongo
