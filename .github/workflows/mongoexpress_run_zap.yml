@@ -1,10 +1,9 @@
 # This is a workflow to automate testing using mongo-express and ZAP
 name: run_zap_mongoexpress
 on:
-  # Run manually
   workflow_dispatch:
 jobs:
-  build:
+  setup:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     steps:
@@ -29,19 +28,23 @@ jobs:
       - name: Get Mongo-Express
         run: |
           sudo npm install -g mongo-express
-      - name: Set custom config.js
+      - name: Set custom config.js for express
         run: |
           sudo mv ./config.js /usr/local/lib/node_modules/mongo-express/
       - name: Install pymongo
         run: |
           pip install pymongo
-      - name: Config mongodb
+      - name: Initialise mongodb "exampledb"
         run: |
           cd ./run_scripts/zap/mongo-express
           python 4_mongodb_init.py
       - name: Start mongo-express
         run: |
           mongo-express -H localhost -P 27017
+  launch:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+    steps:
       - name: Run ZAP
         run: ./ZAP_2.10.0/zap.sh -daemon -config api.disablekey=true -config ajaxSpider.maxDuration=180 > /dev/null &
       - name: Wait for ZAP to boot
