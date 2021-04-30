@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: arachni_report
-          path: /arachni-1.5.1-0.5.12/bin/arachni_juiceshop_report.afr
+          path: /arachni-1.5.1-0.5.12/bin/arachni_report.afr
