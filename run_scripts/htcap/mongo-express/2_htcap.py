@@ -12,14 +12,12 @@ os.chdir('../../')
 
 #easy way to change spider run time in seconds - e.g. (3 hours = 10800)
 SPIDERTIME = 10800
-admin = b"admin"
-pwd = b"pass"
 
 #start timer
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -A %s:%s -w -t %d http://localhost:8081 htcap_mongoexpress_report.db" % (admin, pwd, SPIDERTIME)
+crawl = "./htcap.py crawl -w -t %d admin:pass@localhost:8081 htcap_mongoexpress_report.db" % SPIDERTIME
 
 #crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
