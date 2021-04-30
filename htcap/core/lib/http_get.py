@@ -85,8 +85,9 @@ class HttpGet:
 
 
 			if request.http_auth:
-				auths = base64.b64encode(request.http_auth)
-				headers.append(("Authorization", "Basic YWRtaW46cGFzcw==" % auths))
+				dummy = request.http_auth.encode()
+				auths = base64.b64encode(dummy)
+				headers.append(("Authorization", "Basic YWRtaW46cGFzcw=="))
 
 
 			if request.referer:
