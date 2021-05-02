@@ -29,6 +29,7 @@ jobs:
           npm run db:seed
           docker-compose build
           docker-compose up -d
+          docker ps
       - run: |
           echo "Start sleep 10s"
           sleep 10
