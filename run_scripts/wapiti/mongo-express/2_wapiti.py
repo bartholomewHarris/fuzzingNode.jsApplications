@@ -14,7 +14,7 @@ os.chdir("../../../")
 login = "admin"+"%"+"pass"
 
 #form the command
-cmd = "wapiti -u http://localhost:8081 --scope domain -d 10 -a %s --auth-type=basic --flush-session -l 2 -S normal --color -m all --max-attack-time 10800 -o ./reports/wapiti" %login
+cmd = "wapiti -u http://localhost:8081 --scope domain -d 10 -a %s --auth-type=basic --flush-session -l 2 -S normal --color -m all --max-attack-time 10800 -o ./reports/wapiti/mongo" %login
 
 #start timer
 start1 = time.time()
