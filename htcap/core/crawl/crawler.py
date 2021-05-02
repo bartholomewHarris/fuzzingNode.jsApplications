@@ -606,8 +606,8 @@ class Crawler:
 
 		Shared.probe_cmd = probe_cmd + probe_options
 
-
-		Shared.starturl = normalize_url(args[0])
+		temp_will_edit = normalize_url(args[0])
+		Shared.starturl = temp_will_edit.split("://")[1]
 		out_file = args[1]
 		print(Shared.starturl)
 		purl = urlsplit(Shared.starturl)
