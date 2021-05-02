@@ -194,7 +194,6 @@ class ProbeExecutor:
 			jsn = None
 			self.cmd = CommandExecutor(self.probe_basecmd + params, True)
 			out, err = self.cmd.execute(process_timeout + 10)
-			print(url)
 			if os.path.isfile(self.out_file):
 				with open(self.out_file, "r") as f:
 					jsn = f.read()

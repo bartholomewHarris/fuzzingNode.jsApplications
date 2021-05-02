@@ -606,12 +606,11 @@ class Crawler:
 
 		Shared.probe_cmd = probe_cmd + probe_options
 
-		temp_will_edit = normalize_url(args[0])
-		Shared.starturl = temp_will_edit.split("://")[1]
+
+		Shared.starturl = normalize_url(args[0])
 		out_file = args[1]
-		print(Shared.starturl)
+
 		purl = urlsplit(Shared.starturl)
-		print(purl)
 		Shared.allowed_domains.add(purl.hostname)
 
 
@@ -626,9 +625,6 @@ class Crawler:
 			stdoutw("Logging in . . . ")
 			try:
 				pe = ProbeExecutor(login_req, Shared.probe_cmd + ["-z"], login_sequence=Shared.options['login_sequence'])
-				print("\n\n")
-				print(login_req)
-				print("\n\n")
 				probe = pe.execute()
 				if not probe:
 					print("\n* ERROR: login sequence failed to execute probe")
