@@ -17,7 +17,7 @@ SPIDERTIME = 10800
 start1 = time.time()
 
 #form the command
-crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
+crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json http://127.0.0.1:4000 htcap_nodegoat_report.db" % SPIDERTIME
 
 #crawl
 subprocess.call(crawl, shell=True)
