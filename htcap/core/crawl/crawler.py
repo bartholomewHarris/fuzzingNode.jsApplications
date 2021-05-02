@@ -607,8 +607,8 @@ class Crawler:
 		Shared.probe_cmd = probe_cmd + probe_options
 
 
-		Shared.starturl = normalize_url(args[0])
-		out_file = args[1]
+		# Shared.starturl = normalize_url(args[0])
+		# out_file = args[1]
 
 		purl = urlsplit(Shared.starturl)
 		Shared.allowed_domains.add(purl.hostname)
