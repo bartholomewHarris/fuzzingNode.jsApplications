@@ -1,4 +1,4 @@
-# This is a workflow to automate testing using a docker image of juice-shop and locally installed htcap
+# This is a workflow to automate testing using a docker image of mongoexpress and locally installed htcap
 name: run_htcap_nodegoat
 on:
   workflow_dispatch:
