@@ -19,7 +19,11 @@ start1 = time.time()
 #form the command
 crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
 
-#crawl - native+sqlmap+wapiti
+#crawl
+subprocess.call(crawl, shell=True)
+subprocess.call(crawl, shell=True)
+subprocess.call(crawl, shell=True)
+subprocess.call(crawl, shell=True)
 subprocess.call(crawl, shell=True)
 
 #calculate crawl time
@@ -51,4 +55,4 @@ print("\nSCAN TIME (minutes):")
 print((int)(total2))
 
 #persist the window to view results
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
