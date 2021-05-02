@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: '2.7.x'
+          python-version: '3.3'
       - name: Setup dependencies
         run: |
           # install mongo db
@@ -35,7 +35,7 @@ jobs:
       - name: Run htcap
         run: |
           cd ./run_scripts/htcap/nodegoat        
-          python 2_htcap.py
+          python3 2_htcap.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:

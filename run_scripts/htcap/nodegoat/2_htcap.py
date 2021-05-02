@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import subprocess
 import os
@@ -20,10 +20,6 @@ start1 = time.time()
 crawl = "./htcap.py crawl -w -t %d -L login-nodegoat.json http://localhost:4000 htcap_nodegoat_report.db" % SPIDERTIME
 
 #crawl
-subprocess.call(crawl, shell=True)
-subprocess.call(crawl, shell=True)
-subprocess.call(crawl, shell=True)
-subprocess.call(crawl, shell=True)
 subprocess.call(crawl, shell=True)
 
 #calculate crawl time
