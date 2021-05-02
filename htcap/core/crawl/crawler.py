@@ -625,6 +625,9 @@ class Crawler:
 			stdoutw("Logging in . . . ")
 			try:
 				pe = ProbeExecutor(login_req, Shared.probe_cmd + ["-z"], login_sequence=Shared.options['login_sequence'])
+				print("\n\n")
+				print(login_req)
+				print("\n\n")
 				probe = pe.execute()
 				if not probe:
 					print("\n* ERROR: login sequence failed to execute probe")
