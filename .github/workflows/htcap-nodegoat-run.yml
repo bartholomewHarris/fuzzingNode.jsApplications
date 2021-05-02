@@ -37,7 +37,7 @@ jobs:
           git clone https://github.com/fcavallarin/htcap.git htcap2
           cd htcap2
           docker build -t htcap --build-arg HTCAP_VERSION=master . 
-          mkdir -p htcap-out && docker run -v "$(pwd)/htcap-out/":/out/ --rm --name htcap htcap
+          mkdir -p htcap-out && docker run -v -d "$(pwd)/htcap-out/":/out/ --rm --name htcap htcap
           docker exec -it htcap bash
           htcap
           cd ./run_scripts/htcap/nodegoat        
