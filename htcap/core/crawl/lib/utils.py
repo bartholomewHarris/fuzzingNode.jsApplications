@@ -200,12 +200,19 @@ class ProbeExecutor:
 					jsn = f.read()
 				os.unlink(self.out_file)
 
-			if err or not jsn:
+			if err:
 				self.errors.append(ERROR_PROBEKILLED)
 				if not jsn:
 					break
 
-			print("HERE2")			
+			print("err")
+
+			if not jsn:
+				self.errors.append(ERROR_PROBEKILLED)
+				if not jsn:
+					break
+			print("jsn")
+			
 			# try to decode json also after an exception .. sometimes phantom crashes BUT returns a valid json ..
 			try:
 				if jsn and type(jsn) is not str:
