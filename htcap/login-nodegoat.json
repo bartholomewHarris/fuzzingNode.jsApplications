@@ -1,7 +1,7 @@
 {
     "type":"shared",
     "cookies":["connect.sid"],
-    "url":"172.18.0.2:4000/login/",
+    "url":"localhost:4000/login/",
     "loggedinCondition":"<title>OWASP Node.js Goat Project</title>",
     "sequence": [
         ["write", "#userName", "admin"],
