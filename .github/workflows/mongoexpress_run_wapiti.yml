@@ -1,0 +1,44 @@
+# This is a workflow to automate testing using mongo-express and wapiti
+name: run_wapiti_mongoexpress
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install wapiti
+        run: |
+          pip install wapiti3
+      - name: Get Mongodb
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo systemctl start mongod          
+      - name: Get Mongo-Express
+        run: |
+          sudo npm install -g mongo-express
+      - name: Set custom config.js for express
+        run: |
+          sudo mv ./config.js /usr/local/lib/node_modules/mongo-express/
+      - name: Install pymongo
+        run: |
+          pip install pymongo
+      - name: Initialise mongodb "exampledb"
+        run: |
+          cd ./run_scripts/wapiti/mongo-express
+          python 4_mongodb_init.py
+      - name: Start mongo-express detached
+        run: |
+          mongo-express -H localhost -P 27017 &
+      - name: Run wapiti
+        run: |
+          cd ./run_scripts/wapiti/mongo-express
+          python 2_wapiti.py      
+      - name: Export artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: wapiti_mongoexpress_report
+          path: ./reports/wapiti_mongoexpress_report.html

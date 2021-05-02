@@ -11,15 +11,15 @@ subprocess.call("sudo apt install rename", shell=True)
 os.chdir("../../../")
 
 #auth string
-login = "admin"+"%"+"Admin_123"
+login = "admin"+"%"+"pass"
 
 #form the command
-cmd = "wapiti -u http://localhost:4000 --scope domain -d 10 -a %s --auth-type=post -s http://localhost:4000/login --flush-session -l 2 -S normal --color -m all --max-attack-time 10800 -o ./reports/wapiti" %login
+cmd = "wapiti -u http://localhost:8081 --scope domain -d 10 -a %s --auth-type=basic --flush-session -l 2 -S normal --color -m all --max-attack-time 10800 -o ./reports/wapiti" %login
 
 #start timer
 start1 = time.time()
 
-#crawl & scan & save report
+#crawl & scan & save report - native+sqlmap+wapiti
 subprocess.call(cmd, shell=True)
 
 #calculate run time
@@ -31,8 +31,8 @@ print("\nTOTAL TIME (minutes):")
 print((int)(total1))
 
 #re-name and save report
-os.chdir("./reports/wapiti/nodegoat")
-subprocess.call("rename 's/localhost_4000_.*.html/wapiti_nodegoat_report.html/' *", shell=True)
+os.chdir("./reports/wapiti/mongo")
+subprocess.call("rename 's/localhost_8081_.*.html/wapiti_mongoexpress_report.html/' *", shell=True)
 
 #persist the window to view results
 # input("\n Press enter to close window...")

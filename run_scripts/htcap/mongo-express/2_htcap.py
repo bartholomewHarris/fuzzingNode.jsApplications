@@ -16,10 +16,8 @@ SPIDERTIME = 10800
 #start timer
 start1 = time.time()
 
-#form the command
+#crawl
 crawl = "./htcap.py crawl -w -t %d admin:pass@localhost:8081 htcap_mongoexpress_report.db" % SPIDERTIME
-
-#crawl - native+sqlmap+wapiti
 subprocess.call(crawl, shell=True)
 
 #calculate crawl time
@@ -51,4 +49,4 @@ print("\nSCAN TIME (minutes):")
 print((int)(total2))
 
 #persist the window to view results
-# input("\n Press enter to close window...")
+input("\n Press enter to close window...")
