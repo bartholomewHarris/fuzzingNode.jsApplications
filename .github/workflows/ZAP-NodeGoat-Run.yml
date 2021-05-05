@@ -47,5 +47,5 @@ jobs:
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: NodeGoat_report
+          name: zap_nodegoat_report
           path: ./reports/zap_nodegoat_report.html

@@ -28,5 +28,5 @@ jobs:
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: wapiti_report
+          name: wapiti_juiceshop_report
           path: ./reports/wapiti/juiceshop/wapiti_juiceshop_report.html

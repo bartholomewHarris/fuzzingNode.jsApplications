@@ -40,5 +40,5 @@ jobs:
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ZAP_report
+          name: zap_juiceshop_report
           path: ./reports/zap_juiceshop_report.html

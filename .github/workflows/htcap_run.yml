@@ -28,5 +28,5 @@ jobs:
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
-          name: htcap_report
+          name: htcap_juiceshop_report
           path: ./reports/htcap_juiceshop_report.html
