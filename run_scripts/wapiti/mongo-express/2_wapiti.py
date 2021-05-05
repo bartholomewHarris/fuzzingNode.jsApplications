@@ -19,7 +19,7 @@ cmd = "wapiti -u http://localhost:8081 --scope domain -d 10 -a %s --auth-type=ba
 #start timer
 start1 = time.time()
 
-#crawl & scan & save report - native+sqlmap+wapiti
+#crawl & scan & save report
 subprocess.call(cmd, shell=True)
 
 #calculate run time
