@@ -3,7 +3,7 @@
 
 ### This is a project aimed at fuzzing Node.js applications and reporting on their ability to detect security vulnerabilities.
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 
 ## Project Notes ##
 
@@ -15,15 +15,15 @@ Each combination varies widely in how long it can take to run, so some can be do
 
 Reports are not kept in the `reports` folder - this is really just for local testing/running, but will be available to download once the job has completed by clicking through to it under the *Artifacts* section.
 
+----------------------------------------------------
+
 ### *Running Locally:*
 
 *NOTE: This will require some setup that is not detailed here, specifically:*
 
-*- Install and setting up [mongobd](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)*
+*- Install and set up [mongobd](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)*
 
-*- Install and setting up [mongo-express](https://github.com/mongo-express/mongo-express)*
-
-*- Set Zap Environment variables - instructions below*
+*- Install and set up [mongo-express](https://github.com/mongo-express/mongo-express)*
 
 *- Install [Python/pip](https://www.python.org/downloads/source/)*
 
@@ -33,7 +33,15 @@ Reports are not kept in the `reports` folder - this is really just for local tes
 
 *- Install [zap-cli](https://github.com/Grunny/zap-cli)*
 
-*- Ensure ports 3000, 4000 and 8081 are not currently in use*
+*- Set Zap Environment variables - instructions below*
+
+*- Place config.js into `PATH/node_modules/mongo-express/`*
+
+*- Init/use an empty db called `exampledb` in mongodb and run `4_mongodb_init.py` from any run_scripts mongo folder*
+
+*- Ensure ports 3000, 4000, 8081 and 27017 are not currently in use*
+
+----------------------------------------------------
 
 If you would prefer to run fuzzers locally, simply clone the repo and navigate to the `run_scripts` folder
 
@@ -46,6 +54,8 @@ To launch a fuzzer against an application, open a terminal in the target folder 
 This will launch the required scripts to set up, crawl, scan and save the resultant output in the `reports` folder. If you encounter errors use the logs/output to determine what the issue is. It's possible some dependencies are required but have not been identified above.
 
 *NOTE: All scripts have been written in Python and assume the user is running a (relatively) modern version of Ubuntu. Other distributions have not been tested, however assuming you have gnome terminal installed (along with the other requirements outlined above) it should work - You could also just replace gnome-terminal in each run.py with the terminal of your choice*
+
+----------------------------------------------------
 
 ### *Zap Environment variables:*
 
@@ -63,9 +73,12 @@ To find your api key: Open ZAP -> Tools -> Options -> API
 
 More info on api keys here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
 
+----------------------------------------------------
+
 ### *Misc. Notes:*
 
 In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions, all file directory commands can be found starting with: `os.chdir(<file_path>)`
 
-Where possible, each `run.py` will produce a report of findings - these are stored in the 'reports' folder and will follow the format "<fuzzer>_<application>_report.html"
-
+When run locally, each `run.py` will produce a report of findings - these are stored in the 'reports' folder and will follow the format "<fuzzer>_<application>_report.html"
+  
+You can uncomment the final line of each 'attack' script to show the run times of each process
