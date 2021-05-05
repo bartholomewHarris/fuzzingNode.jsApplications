@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wapiti_nodegoat_report
-          path: ./reports/wapiti/nodegoat/wapiti_nodegoat_report.html
+          path: ./reports/wapiti/nodegoat/*

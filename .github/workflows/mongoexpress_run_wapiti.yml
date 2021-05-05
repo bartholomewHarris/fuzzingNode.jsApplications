@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wapiti_mongoexpress_report
-          path: ./reports/wapiti/mongo/wapiti_mongoexpress_report.html
+          path: ./reports/wapiti/mongo/*
