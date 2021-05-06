@@ -7,7 +7,7 @@ os.chdir("./../../../arachni-1.5.1-0.5.12/bin")
 
 # hostname = subprocess.check_output(["hostname"])
 # hostname = hostname.decode("utf-8")
-hostname = "127.0.2.1"
+hostname = "bart-VirtualBox"
 
 target = "http://admin:pass@" + hostname 
 target = target.rstrip("\n")

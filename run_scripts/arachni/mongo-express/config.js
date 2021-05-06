@@ -4,7 +4,7 @@ let mongo = {
   // Setting the connection string will only give access to that database
   // to see more databases you need to set mongodb.admin to true or add databases to the mongodb.auth list
   connectionString: process.env.ME_CONFIG_MONGODB_SERVER ? '' : process.env.ME_CONFIG_MONGODB_URL,
-  host: '127.0.2.1',
+  host: '127.0.0.1',
   port: '27017',
   dbName: 'exampledb',
 };
@@ -125,7 +125,7 @@ module.exports = {
     baseUrl: process.env.ME_CONFIG_SITE_BASEURL || '/',
     cookieKeyName: 'mongo-express',
     cookieSecret: process.env.ME_CONFIG_SITE_COOKIESECRET || 'cookiesecret',
-    host: process.env.VCAP_APP_HOST || 'localhost',
+    host: process.env.VCAP_APP_HOST || 'bart-VirtualBox',
     port: process.env.VCAP_APP_PORT || 8081,
     requestSizeLimit: process.env.ME_CONFIG_REQUEST_SIZE || '50mb',
     sessionSecret: process.env.ME_CONFIG_SITE_SESSIONSECRET || 'sessionsecret',
