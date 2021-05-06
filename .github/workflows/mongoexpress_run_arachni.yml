@@ -37,6 +37,11 @@ jobs:
       - name: Start mongo-express detached
         run: |
           mongo-express -H localhost -P 27017 &
+      - name: Wait for mongo to load
+        run: |
+          echo "Start sleep 10s"
+          sleep 10
+          echo "Finished sleep"
       - name: Attack mongoexpress
         run: |
           cd run_scripts/arachni/mongo-express/
