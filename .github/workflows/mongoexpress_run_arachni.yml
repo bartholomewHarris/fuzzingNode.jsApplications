@@ -1,0 +1,48 @@
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
+name: run_arachni_mongoexpress
+on:
+  # Run manually
+  workflow_dispatch:
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Pull arachni
+        run: |
+          wget https://github.com/Arachni/arachni/releases/download/v1.5.1/arachni-1.5.1-0.5.12-linux-x86_64.tar.gz
+          tar -xvf arachni-1.5.1-0.5.12-linux-x86_64.tar.gz
+      - name: Get Mongodb
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo systemctl start mongod          
+      - name: Get Mongo-Express
+        run: |
+          sudo npm install -g mongo-express
+      - name: Set custom config.js for express
+        run: |
+          sudo mv ./config.js /usr/local/lib/node_modules/mongo-express/
+      - name: Install pymongo
+        run: |
+          pip install pymongo
+      - name: Initialise mongodb "exampledb"
+        run: |
+          cd ./run_scripts/htcap/mongo-express
+          python 4_mongodb_init.py
+      - name: Start mongo-express detached
+        run: |
+          mongo-express -H localhost -P 27017 &
+      - name: Attack mongoexpress
+        run: |
+          cd run_scripts/arachni/mongo-express/
+          python arachni_attack.py
+      - name: Export artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: arachni_report
+          path: /home/runner/work/fuzzingNode.jsApplications/fuzzingNode.jsApplications/arachni-1.5.1-0.5.12/bin/arachni_report.html.zip
