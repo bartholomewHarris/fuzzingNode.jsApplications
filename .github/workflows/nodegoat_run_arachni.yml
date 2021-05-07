@@ -1,5 +1,5 @@
 # This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
-name: run_arachni_juiceshop
+name: run_arachni_nodegoat
 on:
   # Run manually
   workflow_dispatch:
