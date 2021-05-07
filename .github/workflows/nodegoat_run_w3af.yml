@@ -15,17 +15,28 @@ jobs:
           sudo apt-get update
           sudo apt-get install python2.7-minimal
           sudo apt-get install w3af
-      - name: Pull and run juice-shop
+      - name: Setup dependencies for nodegoat
         run: |
-          docker pull bkimminich/juice-shop
-          docker run -d -p 3000:3000 bkimminich/juice-shop
-      - name: Wait for juiceshop to load
+          python -m pip install --upgrade pip
+          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo systemctl start mongod
+          sudo systemctl status mongod
+      - name: Run NodeGoat
         run: |
-          echo "Start sleep 20s"
-          sleep 20
+          cd ./nodegoat/NodeGoat
+          sudo systemctl start mongod
+          npm run db:seed
+          docker-compose build
+          docker-compose up -d
+      - run: |
+          echo "Start sleep 10s"
+          sleep 10
           echo "Finished sleep"
       - name: Run w3af attack script
-        run: sudo w3af_console -s ./run_scripts/w3af/juiceshop/w3af_attack.w3af
+        run: sudo w3af_console -s ./run_scripts/w3af/nodegoat/w3af_attack.w3af
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
