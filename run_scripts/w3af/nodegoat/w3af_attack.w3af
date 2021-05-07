@@ -1,0 +1,9 @@
+profiles use full_audit
+http-settings set basicAuthUser admin@juice-sh.op
+http-settings set basicAuthPass admin123
+http-settings set basicAuthDomain http://localhost:3000/#/login
+plugins output textFile htmlFile export_requests
+target set target http://127.0.0.1:3000
+start
+
+exit

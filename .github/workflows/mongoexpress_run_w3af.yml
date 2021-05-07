@@ -1,0 +1,49 @@
+# This is a workflow to automate testing using a docker image of juice-shop and locally installed ZAP
+name: run_w3af_mongoexpress
+on:
+  # Run manually
+  workflow_dispatch:
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-16.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Setup dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install python2.7-minimal
+          sudo apt-get install w3af
+      - name: Get Mongodb
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo systemctl start mongod          
+      - name: Get Mongo-Express
+        run: |
+          sudo npm install -g mongo-express
+      - name: Set custom config.js for express
+        run: |
+          sudo mv ./config.js /usr/local/lib/node_modules/mongo-express/
+      - name: Install pymongo
+        run: |
+          pip install pymongo
+      - name: Initialise mongodb "exampledb"
+        run: |
+          cd ./run_scripts/htcap/mongo-express
+          python 4_mongodb_init.py
+      - name: Wait for mongo-express to load
+        run: |
+          echo "Start sleep 10s"
+          sleep 10
+          echo "Finished sleep"
+      - name: Run w3af attack script
+        run: sudo w3af_console -s ./run_scripts/w3af/mongo-express/w3af_attack.w3af
+      - name: Export artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: w3af_report
+          path: /usr/share/w3af/report.html
