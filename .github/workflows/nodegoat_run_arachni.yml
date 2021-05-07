@@ -36,7 +36,7 @@ jobs:
           echo "Finished sleep"
       - name: Attack nodegoat
         run: |
-          cd run_scripts/arachni/juiceshop/
+          cd run_scripts/arachni/nodegoat/
           python arachni_attack.py
       - name: Export artifact
         uses: actions/upload-artifact@v2
