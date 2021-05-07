@@ -51,4 +51,4 @@ print("\nSCAN TIME (minutes):")
 print((int)(total2))
 
 #persist the window to view results
-input("\n Press enter to close window...")
+# input("\n Press enter to close window...")
