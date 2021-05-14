@@ -42,8 +42,8 @@ jobs:
           echo "Finished sleep"
       - name: Run w3af attack script
         run: |
-          cd ../..
-          sudo w3af_console -s ./w3af/mongo-express/w3af_attack.w3af
+          cd ../../w3af/mongo-express/
+          sudo w3af_console -s w3af_attack.w3af
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
