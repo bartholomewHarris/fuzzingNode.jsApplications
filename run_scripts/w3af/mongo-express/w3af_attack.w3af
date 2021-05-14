@@ -1,5 +1,4 @@
 profiles use full_audit
-http-settings set basicAuthDomain http://localhost:8081
 plugins output textFile htmlFile export_requests
 target set target http://localhost:8081
 start
