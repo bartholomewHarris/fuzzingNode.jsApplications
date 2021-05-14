@@ -1,6 +1,6 @@
 profiles use full_audit
 plugins output textFile htmlFile export_requests
-target set target http://localhost:8081
+target set target http://127.0.0.1:8081
 start
 
 exit
