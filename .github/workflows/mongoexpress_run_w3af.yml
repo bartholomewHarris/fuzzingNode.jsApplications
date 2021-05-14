@@ -37,13 +37,13 @@ jobs:
           python 4_mongodb_init.py
       - name: Wait for mongo-express to load
         run: |
-          echo "Start sleep 20s"
-          sleep 20
+          echo "Start sleep 10s"
+          sleep 10
           echo "Finished sleep"
       - name: Run w3af attack script
         run: |
-          cd ~/fuzzingNode.jsApplications
-          sudo w3af_console -s ./run_scripts/w3af/mongo-express/w3af_attack.w3af
+          cd ../..
+          sudo w3af_console -s ./w3af/mongo-express/w3af_attack.w3af
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
