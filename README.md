@@ -3,6 +3,30 @@
 
 ### This is a project aimed at fuzzing Node.js applications and reporting on their ability to detect security vulnerabilities.
 
+---------------------------------------------------
+
+Fuzzers Used:
+
+- [OWASP Zap](https://www.zaproxy.org/)
+
+- [htcap](https://htcap.org/)
+
+- [W3af](https://w3af.org/)
+
+- [Wapiti](https://wapiti.sourceforge.io/)
+
+- [Arachni](https://www.arachni-scanner.com/)
+
+----------------------------------------------------
+
+Applications Analysed:
+
+- [JuiceShop](https://github.com/bkimminich/juice-shop)
+
+- [Nodegoat](https://github.com/OWASP/NodeGoat)
+
+- [Mongo Express](https://github.com/mongo-express/mongo-express)
+
 ----------------------------------------------------
 
 ## Project Notes ##
