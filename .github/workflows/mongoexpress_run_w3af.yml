@@ -23,27 +23,20 @@ jobs:
           sudo apt-get install -y mongodb-org
           sudo systemctl start mongod          
       - name: Get Mongo-Express
-        run: |
-          sudo npm install -g mongo-express
+        run: sudo npm install -g mongo-express
       - name: Set custom config.js for express
-        run: |
-          sudo mv ./run_scripts/w3af/mongo-express/config.js /usr/local/lib/node_modules/mongo-express/
+        run: sudo mv ./run_scripts/w3af/mongo-express/config.js /usr/local/lib/node_modules/mongo-express/
       - name: Install pymongo
-        run: |
-          pip install pymongo
+        run: pip install pymongo
       - name: Initialise mongodb "exampledb"
-        run: |
-          cd ./run_scripts/htcap/mongo-express
-          python 4_mongodb_init.py
+        run: python ./run_scripts/htcap/mongo-express/4_mongodb_init.py
       - name: Wait for mongo-express to load
         run: |
           echo "Start sleep 10s"
           sleep 10
           echo "Finished sleep"
       - name: Run w3af attack script
-        run: |
-          cd ../../w3af/mongo-express/
-          sudo w3af_console -s w3af_attack.w3af
+        run: sudo w3af_console -s ./run_scripts/w3af/mongo-express/w3af_attack.w3af
       - name: Export artifact
         uses: actions/upload-artifact@v2
         with:
