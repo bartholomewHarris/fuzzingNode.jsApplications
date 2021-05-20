@@ -125,7 +125,7 @@ module.exports = {
     baseUrl: process.env.ME_CONFIG_SITE_BASEURL || 'http://',
     cookieKeyName: 'mongo-express',
     cookieSecret: process.env.ME_CONFIG_SITE_COOKIESECRET || 'cookiesecret',
-    host: process.env.VCAP_APP_HOST || 'localhost',
+    host: process.env.VCAP_APP_HOST || '0.0.0.0',
     port: process.env.VCAP_APP_PORT || '8081',
     requestSizeLimit: process.env.ME_CONFIG_REQUEST_SIZE || '50mb',
     sessionSecret: process.env.ME_CONFIG_SITE_SESSIONSECRET || 'sessionsecret',
