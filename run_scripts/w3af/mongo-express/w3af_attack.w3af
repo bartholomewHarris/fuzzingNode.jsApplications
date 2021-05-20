@@ -1,6 +1,17 @@
 profiles use full_audit
+
 plugins output textFile htmlFile export_requests
-target set target http://127.0.0.1:8081
+plugins auth config generic username admin
+plugins auth config generic password pass
+plugins auth config generic password_field pass
+plugins auth config generic username_field admin
+plugins auth config generic auth_url http://0.0.0.0:8081
+
+http-settings set basicAuthUser admin
+http-settings set basicAuthPass pass
+http-settings set basicAuthDomain http://0.0.0.0:8081
+
+target set target http://0.0.0.0:8081
 start
 
 exit
