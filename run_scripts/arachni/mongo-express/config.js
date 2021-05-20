@@ -4,7 +4,7 @@ let mongo = {
   // Setting the connection string will only give access to that database
   // to see more databases you need to set mongodb.admin to true or add databases to the mongodb.auth list
   connectionString: process.env.ME_CONFIG_MONGODB_SERVER ? '' : process.env.ME_CONFIG_MONGODB_URL,
-  host: 'localhost',
+  host: '127.0.0.1',
   port: '27017',
   dbName: 'exampledb',
 };
@@ -18,8 +18,8 @@ if (process.env.VCAP_SERVICES) {
   }
 }
 
-const basicAuthUsername = 'admin';
-const basicAuthPassword = 'pass';
+const basicAuthUsername = '';
+const basicAuthPassword = '';
 const adminUsername = '';
 const adminPassword = '';
 const dbAuthUsername = '';
@@ -110,7 +110,7 @@ module.exports = {
     // if admin is true, the auth list below will be ignored
     // if admin is true, you will need to enter an admin username/password below (if it is needed)
     admin: process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN
-      ? process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN.toLowerCase() === 'true'
+      ? process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN.toLowerCase() === 'false'
       : false,
 
     // whitelist: hide all databases except the ones in this list  (empty list for no whitelist)
@@ -122,7 +122,7 @@ module.exports = {
 
   site: {
     // baseUrl: the URL that mongo express will be located at - Remember to add the forward slash at the start and end!
-    baseUrl: process.env.ME_CONFIG_SITE_BASEURL || 'http://',
+    baseUrl: process.env.ME_CONFIG_SITE_BASEURL || '/',
     cookieKeyName: 'mongo-express',
     cookieSecret: process.env.ME_CONFIG_SITE_COOKIESECRET || 'cookiesecret',
     host: process.env.VCAP_APP_HOST || '0.0.0.0',
@@ -137,12 +137,14 @@ module.exports = {
   // set useBasicAuth to true if you want to authenticate mongo-express logins
   // if admin is false, the basicAuthInfo list below will be ignored
   // this will be true unless ME_CONFIG_BASICAUTH_USERNAME is set and is the empty string
-  useBasicAuth: getFileEnv(basicAuthUsername) !== '',
+  //useBasicAuth: getFileEnv(basicAuthUsername) !== '',
 
-  basicAuth: {
-    username: getFileEnv(basicAuthUsername) || 'admin',
-    password: getFileEnv(basicAuthPassword) || 'pass',
-  },
+  //basicAuth: {
+  //  username: getFileEnv(basicAuthUsername) || '',
+  //  password: getFileEnv(basicAuthPassword) || '',
+  //},
+  
+  
 
   options: {
     // Display startup text on console
@@ -218,3 +220,4 @@ module.exports = {
 
   },
 };
+
