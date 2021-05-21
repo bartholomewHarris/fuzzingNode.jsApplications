@@ -6,15 +6,15 @@ set username admin
 set password pass
 set password_field pass
 set username_field admin
-set auth_url http://0.0.0.0:8081
+set auth_url http://localhost:8081
 back
 back
 
 http-settings set basicAuthUser admin
 http-settings set basicAuthPass pass
-http-settings set basicAuthDomain http://0.0.0.0:8081
+http-settings set basicAuthDomain http://localhost:8081
 
-target set target http://0.0.0.0:8081
+target set target http://localhost:8081
 start
 
 exit
