@@ -1,4 +1,3 @@
-# This is a workflow to automate testing using mongo-express and wapiti
 name: run_wapiti_mongoexpress
 on:
   workflow_dispatch:

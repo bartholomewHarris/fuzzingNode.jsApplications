@@ -53,8 +53,3 @@ subprocess.call('zap-cli report -o zap_juiceshop_report.html -f html', shell=Tru
 
 #persist the window to view output
 # input("\n Press enter to close window...")
-
-#DEPRECIATED
-#run authenticated scan on juiceshop through zap
-#subprocess.call('zap-cli -v quick-scan --spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)
-#subprocess.call('zap-cli -v quick-scan --ajax-spider -r -c zap-juiceshop-context -u admin http://localhost:3000', shell=True)

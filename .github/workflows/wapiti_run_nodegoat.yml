@@ -1,4 +1,3 @@
-# This is a workflow to automate testing using a docker image of nodegoat and wapiti
 name: run_wapiti_nodegoat
 on:
   workflow_dispatch:

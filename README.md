@@ -1,5 +1,8 @@
 # fuzzingNode.jsApplications
-## By BSH Tech
+## By BSH Tech:
+
+- [Bartholomew Harris](https://github.com/bartholomewHarris)
+- [William Boston](https://github.com/williamboston)
 
 ### This is a project aimed at fuzzing Node.js applications and reporting on their ability to detect security vulnerabilities.
 
@@ -43,7 +46,9 @@ Reports are not kept in the `reports` folder - this is really just for local tes
 
 ### *Running Locally:*
 
-*NOTE: This will require some setup that is not detailed here, specifically:*
+While it is possible to run these Fuzzers and applications locally, doing so does require a considerable amount of setup - especially when compared with the ease of launching an Actions script. As such, we reccommend first running via GitHub Actions unless issues with that method present.
+
+*Running Locally will require the following:*
 
 *- Install and set up [mongobd](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)*
 
@@ -65,9 +70,11 @@ Reports are not kept in the `reports` folder - this is really just for local tes
 
 *- Ensure ports 3000, 4000, 8081 and 27017 are not currently in use*
 
+*- Gnome Terminal is installed on the system*
+
 ----------------------------------------------------
 
-If you would prefer to run fuzzers locally, simply clone the repo and navigate to the `run_scripts` folder
+With this done, simply clone the repo and navigate to the `run_scripts` folder
 
 For each fuzzer/application combination there is a specific folder with a master "run.py" script as well as helper scripts to launch all setup/fuzzing/reporting for that specific combination.
 

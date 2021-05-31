@@ -1,14 +1,10 @@
-# This is a workflow to automate testing using mongo-express and htcap
 name: run_htcap_mongoexpress
 on:
-  # Run manually
   workflow_dispatch:
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Get Mongodb
         run: |
