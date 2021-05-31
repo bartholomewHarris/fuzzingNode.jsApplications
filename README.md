@@ -102,14 +102,8 @@ You will need to set the below environment variables for ZAP before running loca
 
 To find your api key: Open ZAP -> Tools -> Options -> API
 
-More info on api keys here: https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/
-
 ----------------------------------------------------
 
 ### *Misc. Notes:*
 
-In each script, file paths have been written to be local to this project so they shouldn't need changing, however if this changes in future revisions, all file directory commands can be found starting with: `os.chdir(<file_path>)`
-
-When run locally, each `run.py` will produce a report of findings - these are stored in the 'reports' folder and will follow the format "<fuzzer>_<application>_report.html"
-  
-You can uncomment the final line of each 'attack' script to show the run times of each process
+When run locally, each `run.py` will produce a report of findings - these are stored in the 'reports' folder and will follow the format "<fuzzer>_<application>_report.html". You can also uncomment the final line of each 'attack' script to show the run times of most processes.
