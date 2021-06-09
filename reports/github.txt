@@ -1,0 +1,3 @@
+This file is here to ensure the report folder gets pushed as GitHub won't 'see' it if it's empty. This is critical for Actions pipelines to succeed.
+
+Safe to completely ignore this text file.
